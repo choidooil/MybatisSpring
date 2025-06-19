@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.MybatisSpring.Repository.UserMapper">
+    <select id="findAllUsers" resultType="User">
+        SELECT userid, username, useraddress FROM users
+    </select>
+
+    <select id="findUser" resultType="User">
+        SELECT userid, username, useraddress FROM users WHERE userid = #{userid}
+    </select>
+
+    <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="userid">
+        INSERT INTO users (userid, username, useraddress) VALUES (#{userid}, #{username}, #{useraddress})
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        UPDATE users SET username = #{username}, useraddress = #{useraddress} WHERE userid = #{userid}
+    </update>
+
+    <delete id="deleteUser">
+        DELETE FROM users WHERE userid = #{userid}
+    </delete>
+</mapper>
