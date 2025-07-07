@@ -3,19 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.MybatisSpring.Repository.UserMapper">
+                   <!--매핑할 인터페이스의 패키지 경로-->
     <select id="findAllUsers" resultType="User">
         SELECT userid, username, useraddress FROM users
     </select>
+    <!--조회시 사용하는 태그 MyBatis는 쿼리 결과의 컬럼 이름을 이 객체의 필드 이름과 매칭하여 자동으로 데이터를 연결.-->
 
     <select id="findUser" resultType="User">
         SELECT userid, username, useraddress FROM users WHERE userid = #{userid}
     </select>
 
-    <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="userid">
+    <insert id="createUser" parameterType="User" useGeneratedKeys="true" keyProperty="userid">
         INSERT INTO users (userid, username, useraddress) VALUES (#{userid}, #{username}, #{useraddress})
     </insert>
 
-    <update id="updateUser" parameterType="User">
+    <update id="patchUser" parameterType="User">
         UPDATE users SET username = #{username}, useraddress = #{useraddress} WHERE userid = #{userid}
     </update>
 

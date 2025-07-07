@@ -27,16 +27,16 @@ public class UserService {
     }
 
     // 회원 가입
-    public User insertUser(User user) {
+    public User createUser(User user) {
         // 비즈니스 로직 추가 가능: 예) 이메일 중복 확인, 데이터 유효성 검사
-        userMapper.insertUser(user);
+        userMapper.createUser(user);
         return user; // 삽입 후 userid가 채워진 User 객체 반환
     }
 
     // 회원 정보 수정
-    public boolean updateUser(User user) {
+    public boolean patchUser(User user) {
         // userid가 유효한지 확인하는 로직 추가 가능
-        int updatedRows = userMapper.updateUser(user);
+        int updatedRows = userMapper.patchUser(user);
         return updatedRows > 0; // 업데이트 성공 여부 반환
     }
 

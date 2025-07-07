@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserMapper {
     List<User> findAllUsers();
     User findUser(long id);
-    void insertUser(User user);
-    int updateUser(User user);
+    void createUser(User user);
+    int patchUser(User user);
     void deleteUser(long id);
 }
